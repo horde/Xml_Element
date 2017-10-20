@@ -10,7 +10,7 @@
   <email>chuck@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>2.0.5</release>
   <api>1.0.0</api>
@@ -49,7 +49,6 @@
        <file name="CountTest.php" role="test" />
        <file name="ElementTest.php" role="test" />
        <file name="IteratorTest.php" role="test" />
-       <file name="phpunit.xml" role="test" />
       </dir> <!-- /test/Horde/Xml/Element -->
      </dir> <!-- /test/Horde/Xml -->
     </dir> <!-- /test/Horde -->
@@ -108,7 +107,6 @@
    <install as="Horde/Xml/Element/fixtures/NamespacedSample.xml" name="test/Horde/Xml/Element/fixtures/NamespacedSample.xml" />
    <install as="Horde/Xml/Element/fixtures/Sample.xml" name="test/Horde/Xml/Element/fixtures/Sample.xml" />
    <install as="Horde/Xml/Element/IteratorTest.php" name="test/Horde/Xml/Element/IteratorTest.php" />
-   <install as="Horde/Xml/Element/phpunit.xml" name="test/Horde/Xml/Element/phpunit.xml" />
   </filelist>
  </phprelease>
  <changelog>
@@ -313,7 +311,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
 * 
