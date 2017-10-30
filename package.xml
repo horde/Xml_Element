@@ -10,7 +10,7 @@
   <email>chuck@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2016-02-02</date>
+ <date>2017-10-30</date>
  <version>
   <release>2.0.5</release>
   <api>1.0.0</api>
@@ -29,6 +29,7 @@
     <dir name="Horde">
      <dir name="Xml">
       <dir name="Element">
+       <file name="CHANGES" role="doc" />
        <file name="COPYING" role="doc" />
       </dir> <!-- /doc/Horde/Xml/Element -->
      </dir> <!-- /doc/Horde/Xml -->
@@ -105,6 +106,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Xml/Element/CHANGES" />
    <install as="COPYING" name="doc/Horde/Xml/Element/COPYING" />
    <install as="Horde/Xml/Element.php" name="lib/Horde/Xml/Element.php" />
    <install as="Horde/Xml/Element/Exception.php" name="lib/Horde/Xml/Element/Exception.php" />
@@ -321,7 +323,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2016-02-02</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
 * 
