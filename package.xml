@@ -59,7 +59,6 @@
        <file name="CountTest.php" role="test" />
        <file name="ElementTest.php" role="test" />
        <file name="IteratorTest.php" role="test" />
-       <file name="phpunit.xml" role="test" />
       </dir> <!-- /test/Horde/Xml/Element -->
      </dir> <!-- /test/Horde/Xml -->
     </dir> <!-- /test/Horde -->
@@ -116,7 +115,6 @@
    <install as="Horde/Xml/Element/CountTest.php" name="test/Horde/Xml/Element/CountTest.php" />
    <install as="Horde/Xml/Element/ElementTest.php" name="test/Horde/Xml/Element/ElementTest.php" />
    <install as="Horde/Xml/Element/IteratorTest.php" name="test/Horde/Xml/Element/IteratorTest.php" />
-   <install as="Horde/Xml/Element/phpunit.xml" name="test/Horde/Xml/Element/phpunit.xml" />
    <install as="Horde/Xml/Element/fixtures/NamespacedSample.xml" name="test/Horde/Xml/Element/fixtures/NamespacedSample.xml" />
    <install as="Horde/Xml/Element/fixtures/Sample.xml" name="test/Horde/Xml/Element/fixtures/Sample.xml" />
   </filelist>
