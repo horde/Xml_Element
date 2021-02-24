@@ -3,10 +3,10 @@ id: Xml_Element
 name: Xml_Element
 full: XML element library
 description: >-
-  A library that provides an element object that can be used to provide SimpleXML-like functionality
-  over a DOM object. The main advantage over using SimpleXML is the ability to
-  add multiple levels of new elements in a single call, without introducing
-  "ghost" objects.
+  A library that provides an element object that can be used to provide
+  SimpleXML-like functionality over a DOM object. The main advantage over using
+  SimpleXML is the ability to add multiple levels of new elements in a single
+  call, without introducing "ghost" objects.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Xml_Element
@@ -18,11 +18,11 @@ authors:
     active: false
     role: lead
 version:
-  release: 2.0.5
-  api: 1.0.0
+  release: 3.0.0alpha1
+  api: 3.0.0alpha1
 state:
-  release: stable
-  api: stable
+  release: alpha
+  api: alpha
 license:
   identifier: BSD-2-Clause
   uri: http://www.horde.org/licenses/bsd
