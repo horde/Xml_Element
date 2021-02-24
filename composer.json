@@ -32,9 +32,6 @@
     "autoload": {
         "psr-0": {
             "Horde_Xml_Element": "lib/"
-        },
-        "psr-4": {
-            "Horde\\Xml\\Element\\": "src/"
         }
     }
 }
