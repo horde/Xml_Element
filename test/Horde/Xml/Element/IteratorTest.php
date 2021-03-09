@@ -6,9 +6,13 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-class Horde_Xml_Element_IteratorTest extends PHPUnit_Framework_TestCase
+namespace Horde\Xml\Element;
+use \PHPUnit\Framework\TestCase;
+use \Horde_Xml_Element_List;
+
+class IteratorTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->list = new Horde_Xml_Element_IteratorTest_List(
             '<?xml version="1.0" encoding="utf-8"?><list><item>1</item><item>2</item></list>'

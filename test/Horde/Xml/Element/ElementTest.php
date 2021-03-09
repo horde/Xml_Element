@@ -6,7 +6,9 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-
+namespace Horde\Xml\Element;
+use \PHPUnit\Framework\TestCase;
+use \Horde_Xml_Element;
 /**
  * @author     Chuck Hagenbuch <chuck@horde.org>
  * @license    http://www.horde.org/licenses/bsd BSD
@@ -14,9 +16,9 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-class Horde_Xml_Element_ElementTest extends PHPUnit_Framework_TestCase
+class ElementTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->element = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/Sample.xml'));
         $this->namespacedElement = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/NamespacedSample.xml'));
