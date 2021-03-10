@@ -6,9 +6,11 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-namespace Horde\Xml\Element;
+namespace Horde\Xml;
+use \Element;
 use \PHPUnit\Framework\TestCase;
 use \Horde_Xml_Element;
+
 /**
  * @author     Chuck Hagenbuch <chuck@horde.org>
  * @license    http://www.horde.org/licenses/bsd BSD
@@ -225,14 +227,9 @@ class ElementTest extends TestCase
 
     public function testIllegalFromArray()
     {
-        $failed = false;
+        $this->expectException('InvalidArgumentException');
         $e = new Horde_Xml_Element('<element />');
-        try {
-            $e->fromArray(array('#name' => array('foo' => 'bar')));
-        } catch (InvalidArgumentException $e) {
-            $failed = true;
-        }
-        $this->assertTrue($failed);
+        $e->fromArray(array('#name' => array('foo' => 'bar')));
     }
 
     public function testCustomGetterGet()
