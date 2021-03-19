@@ -35,13 +35,10 @@ class ElementTest extends TestCase
 
     public function testInvalidXml()
     {
+        $this->expectException('Horde_Xml_Element_Exception');
+
         $failed = false;
-        try {
-            new Horde_Xml_Element('<root');
-        } catch (Horde_Xml_Element_Exception $e) {
-            $failed = true;
-        }
-        $this->assertTrue($failed, 'Invalid XML should result in an exception');
+        new Horde_Xml_Element('<root');
     }
 
     public function testSerialization()
