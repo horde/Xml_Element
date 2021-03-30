@@ -6,6 +6,10 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
+namespace Horde\Xml;
+use \Element;
+use \PHPUnit\Framework\TestCase;
+use \Horde_Xml_Element;
 
 /**
  * @author     Chuck Hagenbuch <chuck@horde.org>
@@ -14,9 +18,9 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-class Horde_Xml_Element_ElementTest extends PHPUnit_Framework_TestCase
+class ElementTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->element = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/Sample.xml'));
         $this->namespacedElement = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/NamespacedSample.xml'));
@@ -31,13 +35,10 @@ class Horde_Xml_Element_ElementTest extends PHPUnit_Framework_TestCase
 
     public function testInvalidXml()
     {
+        $this->expectException('Horde_Xml_Element_Exception');
+
         $failed = false;
-        try {
-            new Horde_Xml_Element('<root');
-        } catch (Horde_Xml_Element_Exception $e) {
-            $failed = true;
-        }
-        $this->assertTrue($failed, 'Invalid XML should result in an exception');
+        new Horde_Xml_Element('<root');
     }
 
     public function testSerialization()
@@ -223,14 +224,9 @@ class Horde_Xml_Element_ElementTest extends PHPUnit_Framework_TestCase
 
     public function testIllegalFromArray()
     {
-        $failed = false;
+        $this->expectException('InvalidArgumentException');
         $e = new Horde_Xml_Element('<element />');
-        try {
-            $e->fromArray(array('#name' => array('foo' => 'bar')));
-        } catch (InvalidArgumentException $e) {
-            $failed = true;
-        }
-        $this->assertTrue($failed);
+        $e->fromArray(array('#name' => array('foo' => 'bar')));
     }
 
     public function testCustomGetterGet()

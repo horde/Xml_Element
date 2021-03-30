@@ -7,22 +7,9 @@
  * @subpackage UnitTests
  */
 namespace Horde\Xml\Element;
-use \PHPUnit\Framework\TestCase;
 use \Horde_Xml_Element_List;
 
-class CountTest extends TestCase
-{
-    public function testCount()
-    {
-        $l = new Horde_CountTest_List(
-            '<?xml version="1.0" encoding="utf-8"?><list><item>1</item><item>2</item></list>'
-        );
-        $this->assertEquals(2, $l->count(), 'List count should be 2');
-    }
-
-}
-
-class Horde_CountTest_List extends Horde_Xml_Element_List
+class CountTest_List extends Horde_Xml_Element_List
 {
     protected function _buildListItemCache()
     {
