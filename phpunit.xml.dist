@@ -6,7 +6,7 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="horde/Xml_Element">
+    <testsuite name="horde/Xml/Element">
       <directory>test</directory>
     </testsuite>
   </testsuites>
