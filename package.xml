@@ -10,7 +10,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2021-03-13</date>
+ <date>2022-11-05</date>
  <version>
   <release>3.0.0alpha4</release>
   <api>3.0.0alpha1</api>
@@ -21,10 +21,18 @@
  </stability>
  <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
  <notes>
-* 
+* [rla] Alpha Release for PHP 8.
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <dir name=".github">
+    <dir name="workflows">
+     <file name="ci.yml" role="php" />
+     <file name="phpdoc.yml" role="php" />
+     <file name="update-satis.yml" role="php" />
+    </dir> <!-- /.github/workflows -->
+   </dir> <!-- /.github -->
    <dir name="doc">
     <dir name="Horde">
      <dir name="Xml">
@@ -56,6 +64,7 @@
        <file name="AllTests.php" role="test" />
        <file name="bootstrap.php" role="test" />
        <file name="CountTest.php" role="test" />
+       <file name="CountTest_List.php" role="test" />
        <file name="ElementTest.php" role="test" />
        <file name="IteratorTest.php" role="test" />
       </dir> <!-- /test/Horde/Xml/Element -->
@@ -68,9 +77,9 @@
  <dependencies>
   <required>
    <php>
-    <min>7.0.0</min>
-    <max>8.0.0alpha1</max>
-    <exclude>8.0.0alpha1</exclude>
+    <min>7.4.0</min>
+    <max>9.0.0alpha1</max>
+    <exclude>9.0.0alpha1</exclude>
    </php>
    <pearinstaller>
     <min>1.7.0</min>
@@ -82,6 +91,9 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="workflows/ci.yml" name=".github/workflows/ci.yml" />
+   <install as="workflows/phpdoc.yml" name=".github/workflows/phpdoc.yml" />
+   <install as="workflows/update-satis.yml" name=".github/workflows/update-satis.yml" />
    <install as="CHANGES" name="doc/Horde/Xml/Element/CHANGES" />
    <install as="Horde/Xml/Element.php" name="lib/Horde/Xml/Element.php" />
    <install as="Horde/Xml/Element/Exception.php" name="lib/Horde/Xml/Element/Exception.php" />
@@ -90,6 +102,7 @@
    <install as="Horde/Xml/Element/AllTests.php" name="test/Horde/Xml/Element/AllTests.php" />
    <install as="Horde/Xml/Element/bootstrap.php" name="test/Horde/Xml/Element/bootstrap.php" />
    <install as="Horde/Xml/Element/CountTest.php" name="test/Horde/Xml/Element/CountTest.php" />
+   <install as="Horde/Xml/Element/CountTest_List.php" name="test/Horde/Xml/Element/CountTest_List.php" />
    <install as="Horde/Xml/Element/ElementTest.php" name="test/Horde/Xml/Element/ElementTest.php" />
    <install as="Horde/Xml/Element/fixtures/NamespacedSample.xml" name="test/Horde/Xml/Element/fixtures/NamespacedSample.xml" />
    <install as="Horde/Xml/Element/fixtures/Sample.xml" name="test/Horde/Xml/Element/fixtures/Sample.xml" />
@@ -97,23 +110,6 @@
   </filelist>
  </phprelease>
  <changelog>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
   <release>
    <version>
     <release>0.4.2</release>
@@ -381,7 +377,8 @@
    <date>2021-03-13</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
-* 
+* [rla] Alpha Release for PHP 8.
+* |+
    </notes>
   </release>
  </changelog>
