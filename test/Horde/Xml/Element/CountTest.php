@@ -6,7 +6,7 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-class Horde_Xml_Element_CountTest extends PHPUnit_Framework_TestCase
+class Horde_Xml_Element_CountTest extends Horde_Test_Case
 {
     public function testCount()
     {

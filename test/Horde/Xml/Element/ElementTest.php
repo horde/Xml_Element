@@ -14,9 +14,9 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-class Horde_Xml_Element_ElementTest extends PHPUnit_Framework_TestCase
+class Horde_Xml_Element_ElementTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->element = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/Sample.xml'));
         $this->namespacedElement = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/NamespacedSample.xml'));
