@@ -20,6 +20,9 @@ use \Horde_Xml_Element;
  */
 class ElementTest extends TestCase
 {
+    protected Horde_Xml_Element $element;
+    protected Horde_Xml_Element $namespacedElement;
+
     public function setUp(): void
     {
         $this->element = new Horde_Xml_Element(file_get_contents(__DIR__ . '/fixtures/Sample.xml'));

@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="test/Horde/Xml/Element/bootstrap.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-  <coverage>
-    <include>
-      <directory suffix=".php">lib</directory>
-    </include>
-  </coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/13.0/phpunit.xsd">
   <testsuites>
-    <testsuite name="horde/Xml/Element">
+    <testsuite name="Xml_Element">
       <directory>test</directory>
     </testsuite>
   </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">lib</directory>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
 </phpunit>

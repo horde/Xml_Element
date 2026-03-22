@@ -12,6 +12,8 @@ use \Horde_Xml_Element_List;
 
 class IteratorTest extends TestCase
 {
+    protected Horde_Xml_Element_IteratorTest_List $list;
+
     public function setUp(): void
     {
         $this->list = new Horde_Xml_Element_IteratorTest_List(
