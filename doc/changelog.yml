@@ -9,7 +9,6 @@
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
   notes: |+
-    
 3.0.0alpha4:
   api: 3.0.0alpha1
   state:
@@ -52,6 +51,33 @@
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
   notes: ~
+3.0.0-alpha6:
+  api: 3.0.0-alpha6
+  state:
+    release: alpha
+    api: alpha
+  date: 2026-03-22
+  license:
+    identifier: BSD-2-Clause
+    uri: https://spdx.org/licenses/BSD-2-Clause.html
+  notes: |-
+    docs: Upgrading guide
+    style: Apply php-cs-fixer
+    feat: Typed PSR-4 equivalent
+    fix: Add returntypewillchange to signatures so we can compromise
+    Development mode for Xml_Element-3.0.0alpha5
+    Released Xml_Element-3.0.0alpha4
+    Update metadata and workflows for PHP 8 support
+    Add CI job for satis repo update
+    Update bootstrap.php
+    Update phpunit.xml.dist
+    Update bootstrap.php
+    no errors, added ci.yml
+    no errors left
+    WIP one error left, 'try to install Horde_Exception in git/xml_element/vendor/horde/exception'
+    WIP 2 errors left
+    WIP 3 errors left, added a new file & namespaces
+    Development mode for Xml_Element-3.0.0alpha5
 2.0.4:
   api: 1.0.0
   state:
@@ -96,17 +122,6 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     [mms] Use new Horde_Test layout.
-2.0.0:
-  api: 1.0.0
-  state:
-    release: stable
-    api: stable
-  date: 2012-10-30
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First stable release for Horde 5.
 2.0.0beta1:
   api: 1.0.0
   state:
@@ -129,6 +144,17 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     First alpha release for Horde 5.
+2.0.0:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2012-10-30
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    First stable release for Horde 5.
 1.0.1:
   api: 1.0.0
   state:
@@ -140,39 +166,6 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     [jan] Fix tests to work with PHPUnit 3.6.
-1.0.0:
-  api: 1.0.0
-  state:
-    release: stable
-    api: stable
-  date: 2011-04-06
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First stable release for Horde 4.
-1.0.0RC2:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-29
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    Second release candidate for Horde 4.
-1.0.0RC1:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-22
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First release candidate for Horde 4.
 1.0.0beta1:
   api: 1.0.0
   state:
@@ -195,6 +188,39 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     First alpha release for Horde 4.
+1.0.0RC2:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-29
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Second release candidate for Horde 4.
+1.0.0RC1:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-22
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    First release candidate for Horde 4.
+1.0.0:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2011-04-06
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    First stable release for Horde 4.
 0.4.2:
   api: 0.4.0
   state:
