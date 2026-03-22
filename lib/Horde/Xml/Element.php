@@ -228,8 +228,10 @@ class Horde_Xml_Element implements ArrayAccess
     public function saveXml($formatted = false)
     {
         // Return a complete document including XML prologue.
-        $doc = new DOMDocument($this->_element->ownerDocument->version,
-                               $this->_element->ownerDocument->actualEncoding);
+        $doc = new DOMDocument(
+            $this->_element->ownerDocument->version ?? '1.0',
+            $this->_element->ownerDocument->encoding ?? 'UTF-8'
+        );
         $doc->formatOutput = $formatted;
         $doc->appendChild($doc->importNode($this->_element, true));
         return $doc->saveXML();
@@ -561,6 +563,7 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         if (strpos($offset, ':') !== false) {
@@ -576,6 +579,7 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if (strpos($offset, ':') !== false) {
@@ -591,6 +595,7 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (!is_scalar($value)) {
@@ -619,6 +624,7 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         if (strpos($offset, ':') !== false) {

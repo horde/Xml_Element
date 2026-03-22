@@ -56,6 +56,7 @@ abstract class Horde_Xml_Element_List extends Horde_Xml_Element implements Count
      *
      * @return integer Item count.
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_listItems);
@@ -66,6 +67,7 @@ abstract class Horde_Xml_Element_List extends Horde_Xml_Element implements Count
      *
      * @internal
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_listItemIndex = 0;
@@ -78,6 +80,7 @@ abstract class Horde_Xml_Element_List extends Horde_Xml_Element implements Count
      *
      * @return mixed The current row, or null if no rows.
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return new $this->_listItemClassName(
@@ -91,6 +94,7 @@ abstract class Horde_Xml_Element_List extends Horde_Xml_Element implements Count
      *
      * @return mixed The current row number (starts at 0), or null if no rows
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_listItemIndex;
@@ -103,6 +107,7 @@ abstract class Horde_Xml_Element_List extends Horde_Xml_Element implements Count
      *
      * @return mixed The next row, or null if no more rows.
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->_listItemIndex;
@@ -115,6 +120,7 @@ abstract class Horde_Xml_Element_List extends Horde_Xml_Element implements Count
      *
      * @return boolean Whether the iteration is valid
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return (0 <= $this->_listItemIndex && $this->_listItemIndex < count($this->_listItems));
