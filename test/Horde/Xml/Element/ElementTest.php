@@ -1,15 +1,4 @@
 <?php
-/**
- * @author     Chuck Hagenbuch <chuck@horde.org>
- * @license    http://www.horde.org/licenses/bsd BSD
- * @category   Horde
- * @package    Xml_Element
- * @subpackage UnitTests
- */
-namespace Horde\Xml;
-use \Element;
-use \PHPUnit\Framework\TestCase;
-use \Horde_Xml_Element;
 
 /**
  * @author     Chuck Hagenbuch <chuck@horde.org>
@@ -17,6 +6,21 @@ use \Horde_Xml_Element;
  * @category   Horde
  * @package    Xml_Element
  * @subpackage UnitTests
+ */
+
+namespace Horde\Xml;
+
+use Element;
+use PHPUnit\Framework\TestCase;
+use Horde_Xml_Element;
+
+/**
+ * @author     Chuck Hagenbuch <chuck@horde.org>
+ * @license    http://www.horde.org/licenses/bsd BSD
+ * @category   Horde
+ * @package    Xml_Element
+ * @subpackage UnitTests
+ * @coversNothing
  */
 class ElementTest extends TestCase
 {
@@ -32,7 +36,7 @@ class ElementTest extends TestCase
     public function testXml()
     {
         $el = new Horde_Xml_Element('<root href="#">Root</root>');
-        $this->assertEquals('Root', (string)$el);
+        $this->assertEquals('Root', (string) $el);
         $this->assertEquals('#', $el['href']);
     }
 
@@ -124,17 +128,17 @@ class ElementTest extends TestCase
 
     public function testGet()
     {
-        $this->assertEquals('Atom Example', (string)$this->element->title);
-        $this->assertEquals('Atom Example', (string)$this->namespacedElement->title);
-        $this->assertEquals('4', (string)$this->element->totalResults);
-        $this->assertEquals('4', (string)$this->namespacedElement->totalResults);
+        $this->assertEquals('Atom Example', (string) $this->element->title);
+        $this->assertEquals('Atom Example', (string) $this->namespacedElement->title);
+        $this->assertEquals('4', (string) $this->element->totalResults);
+        $this->assertEquals('4', (string) $this->namespacedElement->totalResults);
     }
 
     public function testSet()
     {
         $this->element->category = 'tests';
         $this->assertTrue(isset($this->element->category), 'Category should be set');
-        $this->assertEquals('tests', (string)$this->element->category, 'Category should be tests');
+        $this->assertEquals('tests', (string) $this->element->category, 'Category should be tests');
     }
 
     public function testUnset()
@@ -210,26 +214,30 @@ class ElementTest extends TestCase
     {
         $e = new Horde_Xml_Element('<element />');
 
-        $e->fromArray(array('user' => 'Joe Schmoe',
-                            'atom:title' => 'Test Title',
-                            'child#href' => 'http://www.example.com/',
-                            '#title' => 'Test Element'));
+        $e->fromArray(['user' => 'Joe Schmoe',
+            'atom:title' => 'Test Title',
+            'child#href' => 'http://www.example.com/',
+            '#title' => 'Test Element']);
 
-        $this->assertEquals('<element title="Test Element"><user>Joe Schmoe</user><atom:title xmlns:atom="http://www.w3.org/2005/Atom">Test Title</atom:title><child href="http://www.example.com/"/></element>',
-                            $e->saveXmlFragment());
+        $this->assertEquals(
+            '<element title="Test Element"><user>Joe Schmoe</user><atom:title xmlns:atom="http://www.w3.org/2005/Atom">Test Title</atom:title><child href="http://www.example.com/"/></element>',
+            $e->saveXmlFragment()
+        );
 
         $e = new Horde_Xml_Element('<element />');
-        $e->fromArray(array('author' => array('name' => 'Joe', 'email' => 'joe@example.com')));
+        $e->fromArray(['author' => ['name' => 'Joe', 'email' => 'joe@example.com']]);
 
-        $this->assertEquals('<element><author><name>Joe</name><email>joe@example.com</email></author></element>',
-                            $e->saveXmlFragment());
+        $this->assertEquals(
+            '<element><author><name>Joe</name><email>joe@example.com</email></author></element>',
+            $e->saveXmlFragment()
+        );
     }
 
     public function testIllegalFromArray()
     {
         $this->expectException('InvalidArgumentException');
         $e = new Horde_Xml_Element('<element />');
-        $e->fromArray(array('#name' => array('foo' => 'bar')));
+        $e->fromArray(['#name' => ['foo' => 'bar']]);
     }
 
     public function testCustomGetterGet()
@@ -242,8 +250,8 @@ class ElementTest extends TestCase
         $this->assertEquals($e->author, $e->writer);
         $this->assertEquals($e->author->name, $e->psuedonym);
         */
-        $this->assertEquals((string)$e->author, (string)$e->writer);
-        $this->assertEquals((string)$e->author->name, (string)$e->psuedonym);
+        $this->assertEquals((string) $e->author, (string) $e->writer);
+        $this->assertEquals((string) $e->author->name, (string) $e->psuedonym);
     }
 
     public function testCustomGetterCall()

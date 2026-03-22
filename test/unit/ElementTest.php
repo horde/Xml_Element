@@ -38,7 +38,7 @@ class ElementTest extends TestCase
     public function testXml(): void
     {
         $el = new Element('<root href="#">Root</root>');
-        $this->assertEquals('Root', (string)$el);
+        $this->assertEquals('Root', (string) $el);
         $this->assertEquals('#', $el['href']);
     }
 
@@ -128,17 +128,17 @@ class ElementTest extends TestCase
 
     public function testGet(): void
     {
-        $this->assertEquals('Atom Example', (string)$this->element->title);
-        $this->assertEquals('Atom Example', (string)$this->namespacedElement->title);
-        $this->assertEquals('4', (string)$this->element->totalResults);
-        $this->assertEquals('4', (string)$this->namespacedElement->totalResults);
+        $this->assertEquals('Atom Example', (string) $this->element->title);
+        $this->assertEquals('Atom Example', (string) $this->namespacedElement->title);
+        $this->assertEquals('4', (string) $this->element->totalResults);
+        $this->assertEquals('4', (string) $this->namespacedElement->totalResults);
     }
 
     public function testSet(): void
     {
         $this->element->category = 'tests';
         $this->assertTrue(isset($this->element->category), 'Category should be set');
-        $this->assertEquals('tests', (string)$this->element->category, 'Category should be tests');
+        $this->assertEquals('tests', (string) $this->element->category, 'Category should be tests');
     }
 
     public function testUnset(): void
@@ -218,17 +218,21 @@ class ElementTest extends TestCase
             'user' => 'Joe Schmoe',
             'atom:title' => 'Test Title',
             'child#href' => 'http://www.example.com/',
-            '#title' => 'Test Element'
+            '#title' => 'Test Element',
         ]);
 
-        $this->assertEquals('<element title="Test Element"><user>Joe Schmoe</user><atom:title xmlns:atom="http://www.w3.org/2005/Atom">Test Title</atom:title><child href="http://www.example.com/"/></element>',
-                            $e->saveXmlFragment());
+        $this->assertEquals(
+            '<element title="Test Element"><user>Joe Schmoe</user><atom:title xmlns:atom="http://www.w3.org/2005/Atom">Test Title</atom:title><child href="http://www.example.com/"/></element>',
+            $e->saveXmlFragment()
+        );
 
         $e = new Element('<element />');
         $e->fromArray(['author' => ['name' => 'Joe', 'email' => 'joe@example.com']]);
 
-        $this->assertEquals('<element><author><name>Joe</name><email>joe@example.com</email></author></element>',
-                            $e->saveXmlFragment());
+        $this->assertEquals(
+            '<element><author><name>Joe</name><email>joe@example.com</email></author></element>',
+            $e->saveXmlFragment()
+        );
     }
 
     public function testIllegalFromArray(): void
@@ -243,8 +247,8 @@ class ElementTest extends TestCase
         $xml = '<element><author><name>Joe</name><email>joe@example.com</email></author></element>';
         $e = new ElementTestCustomGetter($xml);
 
-        $this->assertEquals((string)$e->author, (string)$e->writer);
-        $this->assertEquals((string)$e->author->name, (string)$e->psuedonym);
+        $this->assertEquals((string) $e->author, (string) $e->writer);
+        $this->assertEquals((string) $e->author->name, (string) $e->psuedonym);
     }
 
     public function testCustomGetterCall(): void

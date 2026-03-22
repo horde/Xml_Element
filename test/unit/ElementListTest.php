@@ -106,12 +106,12 @@ class ElementListTest extends TestCase
     {
         $firstPass = [];
         foreach ($this->list as $item) {
-            $firstPass[] = (string)$item;
+            $firstPass[] = (string) $item;
         }
 
         $secondPass = [];
         foreach ($this->list as $item) {
-            $secondPass[] = (string)$item;
+            $secondPass[] = (string) $item;
         }
 
         $this->assertEquals($firstPass, $secondPass, 'Multiple iterations should produce same results');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author     Chuck Hagenbuch <chuck@horde.org>
  * @license    http://www.horde.org/licenses/bsd BSD
@@ -6,10 +7,15 @@
  * @package    Xml_Element
  * @subpackage UnitTests
  */
-namespace Horde\Xml\Element;
-use \PHPUnit\Framework\TestCase;
-use \Horde_Xml_Element_List;
 
+namespace Horde\Xml\Element;
+
+use PHPUnit\Framework\TestCase;
+use Horde_Xml_Element_List;
+
+/**
+ * @coversNothing
+ */
 class IteratorTest extends TestCase
 {
     protected Horde_Xml_Element_IteratorTest_List $list;
@@ -46,11 +52,11 @@ class IteratorTest extends TestCase
 
     public function testKey()
     {
-        $keys = array();
+        $keys = [];
         foreach ($this->list as $k => $i) {
             $keys[] = $k;
         }
-        $this->assertEquals($keys, array(0, 1), 'List should have keys 0 and 1');
+        $this->assertEquals($keys, [0, 1], 'List should have keys 0 and 1');
     }
 
     public function testNext()
@@ -68,7 +74,7 @@ class Horde_Xml_Element_IteratorTest_List extends Horde_Xml_Element_List
 {
     protected function _buildListItemCache()
     {
-        $results = array();
+        $results = [];
         foreach ($this->_element->childNodes as $child) {
             if ($child->localName == 'item') {
                 $results[] = $child;

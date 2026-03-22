@@ -21,6 +21,7 @@ use DOMElement;
 use Horde\Xml\Element\Element;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use DOMDocument;
 
 #[CoversClass(Element::class)]
 class SerializationTest extends TestCase
@@ -70,7 +71,7 @@ class SerializationTest extends TestCase
 
     public function testWakeupHandlesDomElement(): void
     {
-        $doc = new \DOMDocument();
+        $doc = new DOMDocument();
         $domEl = $doc->createElement('test');
         $doc->appendChild($domEl);
 

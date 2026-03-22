@@ -163,7 +163,7 @@ class Element implements ElementInterface, ArrayAccess
             } elseif ($hash_position === 0) {
                 $attribute = substr($key, 1);
             } else {
-                list($element, $attribute) = explode('#', $key, 2);
+                [$element, $attribute] = explode('#', $key, 2);
             }
 
             if ($element !== null) {
@@ -176,7 +176,7 @@ class Element implements ElementInterface, ArrayAccess
                         $firstKey = key($value);
                         if ($firstKey === 0) {
                             if (strpos($element, ':') !== false) {
-                                list($ns) = explode(':', $element, 2);
+                                [$ns] = explode(':', $element, 2);
                                 $baseNode = $this->element->ownerDocument->createElementNS(
                                     self::lookupNamespace($ns),
                                     $element
@@ -357,7 +357,7 @@ class Element implements ElementInterface, ArrayAccess
             // actually set. This way "if ($foo->bar)" doesn't create
             // a phantom "bar" element in our tree.
             if (strpos($var, ':') !== false) {
-                list($ns, $elt) = explode(':', $var, 2);
+                [$ns, $elt] = explode(':', $var, 2);
                 $node = $this->element->ownerDocument->createElementNS(
                     self::lookupNamespace($ns),
                     $elt
@@ -390,7 +390,7 @@ class Element implements ElementInterface, ArrayAccess
         $nodes = $this->children($var);
         if (!$nodes) {
             if (strpos($var, ':') !== false) {
-                list($ns) = explode(':', $var, 2);
+                [$ns] = explode(':', $var, 2);
                 $node = $this->element->ownerDocument->createElementNS(
                     self::lookupNamespace($ns),
                     $var,
@@ -574,7 +574,7 @@ class Element implements ElementInterface, ArrayAccess
         }
 
         if (strpos($offset, ':') !== false) {
-            list($ns, $attr) = explode(':', $offset, 2);
+            [$ns, $attr] = explode(':', $offset, 2);
             return $this->element->hasAttributeNS(self::lookupNamespace($ns), $attr);
         } else {
             return $this->element->hasAttribute($offset);
@@ -591,7 +591,7 @@ class Element implements ElementInterface, ArrayAccess
         }
 
         if (strpos($offset, ':') !== false) {
-            list($ns, $attr) = explode(':', $offset, 2);
+            [$ns, $attr] = explode(':', $offset, 2);
             return $this->element->getAttributeNS(self::lookupNamespace($ns), $attr) ?: null;
         } else {
             return $this->element->getAttribute($offset) ?: null;
@@ -616,7 +616,7 @@ class Element implements ElementInterface, ArrayAccess
         $this->ensureAppended();
 
         if (strpos($offset, ':') !== false) {
-            list($ns) = explode(':', $offset, 2);
+            [$ns] = explode(':', $offset, 2);
             $this->element->setAttributeNS(self::lookupNamespace($ns), $offset, (string) $value);
         } else {
             $this->element->setAttribute($offset, (string) $value);
@@ -635,7 +635,7 @@ class Element implements ElementInterface, ArrayAccess
         }
 
         if (strpos($offset, ':') !== false) {
-            list($ns, $attr) = explode(':', $offset, 2);
+            [$ns, $attr] = explode(':', $offset, 2);
             $this->element->removeAttributeNS(self::lookupNamespace($ns), $attr);
         } else {
             $this->element->removeAttribute($offset);

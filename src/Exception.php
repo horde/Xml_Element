@@ -27,6 +27,4 @@ use Horde\Exception\HordeRuntimeException;
  * @license  http://www.horde.org/licenses/bsd BSD
  * @package  Xml
  */
-class Exception extends HordeRuntimeException
-{
-}
+class Exception extends HordeRuntimeException {}
