@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Portions Copyright 2005-2007 Zend Technologies USA Inc. (http://www.zend.com)
- * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2007-2026 Horde LLC (http://www.horde.org/)
  *
  * @author   Chuck Hagenbuch <chuck@horde.org>
  * @license  http://www.horde.org/licenses/bsd BSD
@@ -28,12 +29,12 @@ class Horde_Xml_Element implements ArrayAccess
     /**
      * @var array
      */
-    protected static $_namespaces = array(
+    protected static $_namespaces = [
         'opensearch' => 'http://a9.com/-/spec/opensearchrss/1.0/',
         'atom' => 'http://www.w3.org/2005/Atom',
         'rss' => 'http://blogs.law.harvard.edu/tech/rss',
         'rdf' => 'http://www.w3.org/1999/02/22-rdf-syntax-ns',
-    );
+    ];
 
     /**
      * Get the full version of a namespace prefix
@@ -47,9 +48,8 @@ class Horde_Xml_Element implements ArrayAccess
      */
     public static function lookupNamespace($prefix)
     {
-        return isset(self::$_namespaces[$prefix]) ?
-            self::$_namespaces[$prefix] :
-            $prefix;
+        return self::$_namespaces[$prefix]
+            ?? $prefix;
     }
 
     /**
@@ -162,7 +162,7 @@ class Horde_Xml_Element implements ArrayAccess
             } elseif ($hash_position === 0) {
                 $attribute = substr($key, 1);
             } else {
-                list($element, $attribute) = explode('#', $key, 2);
+                [$element, $attribute] = explode('#', $key, 2);
             }
 
             if (!is_null($element)) {
@@ -175,7 +175,7 @@ class Horde_Xml_Element implements ArrayAccess
                         $firstKey = key($value);
                         if ($firstKey === 0) {
                             if (strpos($element, ':') !== false) {
-                                list($ns) = explode(':', $element, 2);
+                                [$ns] = explode(':', $element, 2);
                                 $baseNode = $this->_element->ownerDocument->createElementNS(Horde_Xml_Element::lookupNamespace($ns), $element);
                             } else {
                                 $baseNode = $this->_element->ownerDocument->createElement($element);
@@ -316,7 +316,7 @@ class Horde_Xml_Element implements ArrayAccess
     public function __sleep()
     {
         $this->_serialized = $this->saveXml();
-        return array('_serialized');
+        return ['_serialized'];
     }
 
     /**
@@ -343,7 +343,9 @@ class Horde_Xml_Element implements ArrayAccess
             if ($nodes[0] instanceof Horde_Xml_Element) {
                 return $nodes;
             }
-            return array_map(function($e) { return new Horde_Xml_Element($e); }, $nodes);
+            return array_map(function ($e) {
+                return new Horde_Xml_Element($e);
+            }, $nodes);
         } else {
             // When creating anonymous nodes for __set chaining, don't
             // call appendChild() on them. Instead we pass the current
@@ -352,7 +354,7 @@ class Horde_Xml_Element implements ArrayAccess
             // actually set. This way "if ($foo->bar)" doesn't create
             // a phantom "bar" element in our tree.
             if (strpos($var, ':') !== false) {
-                list($ns, $elt) = explode(':', $var, 2);
+                [$ns, $elt] = explode(':', $var, 2);
                 $node = $this->_element->ownerDocument->createElementNS(Horde_Xml_Element::lookupNamespace($ns), $elt);
             } else {
                 $node = $this->_element->ownerDocument->createElement($var);
@@ -380,7 +382,7 @@ class Horde_Xml_Element implements ArrayAccess
         $nodes = $this->_children($var);
         if (!$nodes) {
             if (strpos($var, ':') !== false) {
-                list($ns) = explode(':', $var, 2);
+                [$ns] = explode(':', $var, 2);
                 $node = $this->_element->ownerDocument->createElementNS(Horde_Xml_Element::lookupNamespace($ns), $var, $val);
                 $this->_element->appendChild($node);
             } else {
@@ -401,7 +403,7 @@ class Horde_Xml_Element implements ArrayAccess
      */
     public function __isset($var)
     {
-        return (boolean)$this->_children($var);
+        return (bool) $this->_children($var);
     }
 
     /**
@@ -426,12 +428,14 @@ class Horde_Xml_Element implements ArrayAccess
                 return $nodes;
             }
             return array_map(
-                function ($e) { return new Horde_Xml_Element($e); },
+                function ($e) {
+                    return new Horde_Xml_Element($e);
+                },
                 $nodes
             );
         } else {
             if ($nodes[0] instanceof Horde_Xml_Element) {
-                return (string)$nodes[0];
+                return (string) $nodes[0];
             } else {
                 return $nodes[0]->nodeValue;
             }
@@ -513,18 +517,18 @@ class Horde_Xml_Element implements ArrayAccess
         // method_exists instead.
         $varMethod = 'get' . Horde_String::ucfirst($var);
         if (method_exists($this, $varMethod)) {
-            $children = call_user_func(array($this, $varMethod));
+            $children = call_user_func([$this, $varMethod]);
             if (is_null($children)) {
-                $this->_children[$var] = array();
+                $this->_children[$var] = [];
             } elseif (!is_array($children)) {
-                $this->_children[$var] = array($children);
+                $this->_children[$var] = [$children];
             } else {
                 $this->_children[$var] = $children;
             }
         }
 
         if (!isset($this->_children[$var])) {
-            $this->_children[$var] = array();
+            $this->_children[$var] = [];
         }
 
         return $this->_children[$var];
@@ -537,13 +541,13 @@ class Horde_Xml_Element implements ArrayAccess
     {
         foreach ($this->_element->childNodes as $child) {
             if (!isset($this->_children[$child->localName])) {
-                $this->_children[$child->localName] = array();
+                $this->_children[$child->localName] = [];
             }
             $this->_children[$child->localName][] = $child;
 
             if ($child->prefix) {
                 if (!isset($this->_children[$child->prefix . ':' . $child->localName])) {
-                    $this->_children[$child->prefix . ':' . $child->localName] = array();
+                    $this->_children[$child->prefix . ':' . $child->localName] = [];
                 }
                 $this->_children[$child->prefix . ':' . $child->localName][] = $child;
             }
@@ -563,11 +567,11 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         if (strpos($offset, ':') !== false) {
-            list($ns, $attr) = explode(':', $offset, 2);
+            [$ns, $attr] = explode(':', $offset, 2);
             return $this->_element->hasAttributeNS(Horde_Xml_Element::lookupNamespace($ns), $attr);
         } else {
             return $this->_element->hasAttribute($offset);
@@ -579,11 +583,11 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if (strpos($offset, ':') !== false) {
-            list($ns, $attr) = explode(':', $offset, 2);
+            [$ns, $attr] = explode(':', $offset, 2);
             return $this->_element->getAttributeNS(Horde_Xml_Element::lookupNamespace($ns), $attr);
         } else {
             return $this->_element->getAttribute($offset);
@@ -595,7 +599,7 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (!is_scalar($value)) {
@@ -605,7 +609,7 @@ class Horde_Xml_Element implements ArrayAccess
         $this->_ensureAppended();
 
         if (strpos($offset, ':') !== false) {
-            list($ns) = explode(':', $offset, 2);
+            [$ns] = explode(':', $offset, 2);
             $result = $this->_element->setAttributeNS(Horde_Xml_Element::lookupNamespace($ns), $offset, $value);
         } else {
             $result = $this->_element->setAttribute($offset, $value);
@@ -624,11 +628,11 @@ class Horde_Xml_Element implements ArrayAccess
      *
      * @internal
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         if (strpos($offset, ':') !== false) {
-            list($ns, $attr) = explode(':', $offset, 2);
+            [$ns, $attr] = explode(':', $offset, 2);
             $result = $this->_element->removeAttributeNS(Horde_Xml_Element::lookupNamespace($ns), $attr);
         } else {
             $result = $this->_element->removeAttribute($offset);
